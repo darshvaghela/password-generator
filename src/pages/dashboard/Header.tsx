@@ -7,7 +7,7 @@ const { Title } = Typography;
 
 const Header: FC = () => {
   return (
-    <Layout style={{ height: "10vh", backgroundColor: "#454545" }}>
+    <Layout style={{ height: "10vh", backgroundColor: "#000000" }}>
       <Content
         style={{
           display: "flex",
