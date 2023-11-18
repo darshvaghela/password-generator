@@ -5,10 +5,12 @@ import { CopyOutlined } from "@ant-design/icons";
 const { Title } = Typography;
 
 interface IPasswordModal {
+  loading: boolean;
   password: string;
   handleGeneratePassword: () => void;
 }
 const PasswordModal: FC<IPasswordModal> = ({
+  loading,
   password,
   handleGeneratePassword,
 }) => {
@@ -56,6 +58,7 @@ const PasswordModal: FC<IPasswordModal> = ({
               type="primary"
               size="large"
               block
+              loading={loading}
               onClick={handleGeneratePassword}
             >
               <b>Re-generate</b>
@@ -63,7 +66,7 @@ const PasswordModal: FC<IPasswordModal> = ({
           </Col>
         </Row>
       }
-      style={{ textAlign: "center", marginTop: "150px" }}
+      style={{ textAlign: "center", marginTop: "100px" }}
     >
       <Input
         value={password}

@@ -10,11 +10,10 @@ import {
   Input,
   message,
 } from "antd";
-import { Content } from "antd/es/layout/layout";
+import { Content, Footer } from "antd/es/layout/layout";
 import { IPassword } from "../../type/password";
 import { generatePassword } from "./DashboardService";
 import PasswordModal from "./PasswordModal";
-import CustomSpin from "../../components/CustomSpin";
 import Header from "./Header";
 
 const { Title } = Typography;
@@ -42,6 +41,7 @@ const Dashboard: FC = () => {
             type="primary"
             size="large"
             block
+            loading={loading}
             onClick={handleGeneratePassword}
           >
             <b>Generate</b>
@@ -64,7 +64,7 @@ const Dashboard: FC = () => {
       !passwordFields.numeric &&
       !passwordFields.symbol
     ) {
-      message.error("Select atleast one type to generate password!");
+      message.error("Please choose at least one password type to generate!");
       return false;
     }
 
@@ -88,19 +88,19 @@ const Dashboard: FC = () => {
   return (
     <>
       <Header />
-      <Layout style={{ minHeight: "90vh", backgroundColor: "#f0f2f5" }}>
+      <Layout style={{ minHeight: "80vh", backgroundColor: "#f0f2f5" }}>
         <Content
           style={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            marginTop: "100px",
           }}
         >
           <PasswordModal
+            loading={loading}
             password={password}
             handleGeneratePassword={handleGeneratePassword}
           />
-          <CustomSpin loading={loading} />
           <Card
             title={getTitle()}
             style={{ width: 600, height: 300, textAlign: "center" }}
@@ -239,6 +239,16 @@ const Dashboard: FC = () => {
           </Card>
         </Content>
       </Layout>
+      <Footer
+        style={{
+          textAlign: "center",
+          position: "sticky",
+          bottom: 0,
+          backgroundColor: "#FFFFFF",
+        }}
+      >
+        &copy; 2023 password-generator. All rights reserved.
+      </Footer>
     </>
   );
 };

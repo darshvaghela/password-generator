@@ -1,7 +1,7 @@
-import { Layout, Typography } from "antd";
+import { Image, Layout, Typography } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { FC } from "react";
-import logo from "../../assets/svg/logo.svg";
+import logo from "../../assets/svg/logo.png";
 
 const { Title } = Typography;
 
@@ -20,10 +20,7 @@ const Header: FC = () => {
           style={{ justifyContent: "start", margin: "20px" }}
           alt="logo"
         />
-        <Title
-          style={{ color: "#16DB65", justifyContent: "center" }}
-          level={2}
-        >
+        <Title style={{ justifyContent: "center" }} level={2}>
           <b>Password Generator</b>
         </Title>
       </Content>
