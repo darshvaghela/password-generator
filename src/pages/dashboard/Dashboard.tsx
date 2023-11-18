@@ -88,7 +88,7 @@ const Dashboard: FC = () => {
   return (
     <>
       <Header />
-      <Layout style={{ minHeight: "80vh", backgroundColor: "#f0f2f5" }}>
+      <Layout style={{ minHeight: "90vh", backgroundColor: "#f0f2f5" }}>
         <Content
           style={{
             display: "flex",
