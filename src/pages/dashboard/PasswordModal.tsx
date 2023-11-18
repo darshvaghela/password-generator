@@ -31,6 +31,7 @@ const PasswordModal: FC<IPasswordModal> = ({
   };
 
   useEffect(() => {
+    setCopied(false);
     setOpen(hasPasswordLength);
   }, [hasPasswordLength, password]);
 
