@@ -20,7 +20,7 @@ const Header: FC = () => {
           style={{ justifyContent: "start", margin: "20px" }}
           alt="logo"
         />
-        <Title style={{ justifyContent: "center" }} level={2}>
+        <Title style={{ justifyContent: "center",margin:"27px 0px" }} level={3}>
           <b>Password Generator</b>
         </Title>
       </Content>
