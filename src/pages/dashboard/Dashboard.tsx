@@ -8,14 +8,12 @@ import {
   Col,
   Typography,
   Input,
-  Spin,
+  message,
 } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { IPassword } from "../../type/password";
 import { generatePassword } from "./DashboardService";
 import PasswordModal from "./PasswordModal";
-import Loader from "../../components/Loader";
-import { LoadingOutlined } from "@ant-design/icons";
 import CustomSpin from "../../components/CustomSpin";
 import Header from "./Header";
 
@@ -53,15 +51,37 @@ const Dashboard: FC = () => {
     );
   };
 
+  const validation = () => {
+    const isValid = true;
+
+    if (passwordFields.length === 0) {
+      message.error("Password length must be greater than 0!");
+      return false;
+    }
+    if (
+      !passwordFields.upperCase &&
+      !passwordFields.lowerCase &&
+      !passwordFields.numeric &&
+      !passwordFields.symbol
+    ) {
+      message.error("Select atleast one type to generate password!");
+      return false;
+    }
+
+    return isValid;
+  };
+
   const handleGeneratePassword = async () => {
-    try {
-      setLoading(true);
-      const response: any = await generatePassword(passwordFields);
-      setPassword(response.password);
-    } catch (error: any) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+    if (validation()) {
+      try {
+        setLoading(true);
+        const response: any = await generatePassword(passwordFields);
+        setPassword(response.password);
+      } catch (error: any) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
